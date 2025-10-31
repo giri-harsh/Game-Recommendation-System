@@ -48,7 +48,7 @@ frontend/.env.local
 backend/__pycache__/
 backend/.env
 backend/*.db
-
 # Environment variables
 .env
 .env.local
+.venv/
