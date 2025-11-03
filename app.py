@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
 import pickle
@@ -13,6 +14,18 @@ except Exception as e:
     raise RuntimeError(f"Error loading model.pkl: {e}")
 
 app = FastAPI(title="Game Recommendation API", version="1.0")
+
+origins = [
+    'https://game-recommeder.vercel.app'
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  # who can ask for cookies
+    allow_credentials=True,  # if login info can be sent
+    allow_methods=["*"],  # what type of requests (GET, POST, etc.)
+    allow_headers=["*"],  # what extra info they can send
+)
 
 class FeatureRequest(BaseModel):
     platforms: Optional[List[str]] = None
