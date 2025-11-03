@@ -21,10 +21,10 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # who can ask for cookies
-    allow_credentials=True,  # if login info can be sent
-    allow_methods=["*"],  # what type of requests (GET, POST, etc.)
-    allow_headers=["*"],  # what extra info they can send
+    allow_origins=origins,  
+    allow_credentials=True,  
+    allow_methods=["*"],  
+    allow_headers=["*"],  
 )
 
 class FeatureRequest(BaseModel):
